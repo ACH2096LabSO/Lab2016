@@ -1,0 +1,1 @@
+gcc c_helloword.cpp -g -o c_helloword_debug.out
