@@ -8,5 +8,5 @@ struct process
   int CPU_b;        //quantidade de clocks de cpu que o processo consumira
   int memory;       //quantidade de memória alocada para o processo
   int I_O;          //quantidade de requisições de Input e Output
-  *process next;    //seria interessante implementar como lista ligada, então precisamos de um ponteiro pro próximo processo
+  process *next;    //seria interessante implementar como lista ligada, então precisamos de um ponteiro pro próximo processo
 };
