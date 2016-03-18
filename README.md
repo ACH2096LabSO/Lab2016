@@ -6,5 +6,5 @@ Laboratório de LabSo
 |Felipe|Giovanni|João|Brunno|Alexandre|
 |Edson|Pedro|   |Leo|Matheus|
 |Victor|Adriano|   |Eduardo|   |
-|Leonardo|
+|Leonardo| |  |Gustavo|  |
 |Juliane|
