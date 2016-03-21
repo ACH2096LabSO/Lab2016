@@ -1,0 +1,27 @@
+Segue a proposição para a estrutura do arquivo de entrada:
+
+Primeira linha contendo 5 ints separados por ';'.
+
+a;b;c;d;e 
+
+Sendo que: 
+a = Tamanho da memória em quadros.
+b = Tamanho dos quadros.
+c = TimeSlice do RoundRobin com o adendo de que se c = 0 então o modo selecionado é o FIFO.
+d = Duração das operações de disco.
+e = Número de processos do arquivo de entrada.
+
+As 'e' linhas restantes contém as descrições dos 'e' processos e seguem a seguinte estrutura:
+
+5 ints separados por ';'.
+
+h;i;j;k;l
+
+Sendo que:
+h = id do processo.
+i = tempo de chegada.
+j = cpu burst.
+k = memória alocada.
+l = número de requisições I/O
+
+O arquivo entrada.c já está operando com estas especificações. 
