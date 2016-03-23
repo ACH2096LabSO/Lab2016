@@ -112,6 +112,7 @@ int main(int argc, char *argv[]) // main para inicializar o programa. qualquer d
 
     setWaitingList(f);
 
+// Seria interessante colocar o código para a execução da simulação aqui
     fclose(f);
     return 0;
 <<<<<<< HEAD
