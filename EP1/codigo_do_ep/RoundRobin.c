@@ -2,18 +2,18 @@
 #include "process_struct.h"
 
 //metodo que zera os tempos de espera um conjunto de processos para que eles sejam executados normalmente durante o round-robin
-void zeraTempoDeEspera(process p){
+void zeraTempoDeEspera(process *p){
 	process *p2=p;
-	while (p2->next!=p){
-		p2->tempoEspera=0;
+	while (p2->next != p){
+		p2->tempoEspera_IO=0;
 		p2=p2->next;
 	}
 }
 
 //metodo que reduz o tempo de espera de todos os processos na fila de espera
-void reduzTempoEspera(process p){
+void reduzTempoEspera(process *p){
 	process *p2=p;
-	while (p2->next!=p){
+	while (p2->next != p){
 		if(p2->tempoEspera_IO>0){
 			p2->tempoEspera_IO--;
 			if(p2->tempoEspera_IO==0){
@@ -24,8 +24,8 @@ void reduzTempoEspera(process p){
 	}
 }
 
-int[] definirIntervalosIO (process p, int numProcessos){
-	int intervalos[numProcessos];
+int *definirIntervalosIO (process *p, int numProcessos){
+	int* intervalos=(int*)malloc(numProcessos*sizeof(int));
 	process *aux=p;
 	int i;
 	for (i=0; i<numProcessos; i++){
@@ -36,13 +36,14 @@ int[] definirIntervalosIO (process p, int numProcessos){
 }
 
 //metodo principal do algoritmo round-robin
-void roundRobin(process processo, int timeSlice, int opDuracao, int numProcessos, int duracao_IO) {
+void roundRobin(process *processo, int timeSlice, int opDuracao, int numProcessos, int duracao_IO) {
+    zeraTempoEspera(processo);
 	printf ("\n Escalonamento dos processos usando Round Robin (Time Slice = %d) \n", timeSlice );
 	int tempo = timeSlice;
 	int i = numProcessos;
-	int[] intervalosIO = definirIntervalosIO (processo, numProcessos);
+	int* intervalosIO = definirIntervalosIO (processo, numProcessos);
 	int indiceIntervalos=0;
-	process p = processo;
+	process *p = processo;
 	while (i<0){
 		int tempoPassado=0;
 		//roda o processo ate que uma das duas condicoes seja atingida:
@@ -77,3 +78,4 @@ void roundRobin(process processo, int timeSlice, int opDuracao, int numProcessos
 		}
 	}
 }
+
