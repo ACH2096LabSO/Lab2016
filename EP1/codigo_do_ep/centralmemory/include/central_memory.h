@@ -70,10 +70,11 @@ int **MEMORY_MAP_TABLE;
  0  : Memoria inicializada com sucesso
  1  : Tamanho de paginas nao alcancado - pouca memoria
  -1 : Tamanho de pagina maior que tamanho da memoria ERRO
+ -2 : Tamanho de pagina fisica e logica diferentes ERRO
 
 **********************************************************/
 
-int init_physical_mem(int size, int num_page, int page_size, TYPE type);
+int init_mem(int size, int num_page, int page_size, TYPE type);
 
 /**********************************************************
 
