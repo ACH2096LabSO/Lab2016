@@ -8,11 +8,13 @@
  Quem mexeu:
 
   - Gustavo Kishima
+  - Leonardo Rocha
 
 
 
 
                              Data de criacao: 24 Mar 2016
+                           Data de alteracao: 25 Mar 2016
 
 **********************************************************/
 
@@ -87,13 +89,23 @@ int init_mem(int size, int num_page, int page_size, TYPE type);
  int job_id - Identificacao do processo
 
  @return
- 0  : memoria alocada com sucesso
- 1  : Memoria nao pode ser alocada - espaco insuficiente
- 2  : Memoria nao pode ser alocada - espaco contiguo
-      insuficiente
+  0 : memoria alocada com sucesso
+  1 : Memoria nao pode ser alocada - espaco insuficiente
  -1 : Memoria nao pode ser alocada - ERRO
 
 ***********************************************************/
 
 int allocate_mem(int size, int job_id);
 
+/**********************************************************
+
+ void free_mem(int job_id);
+ 
+ Libera memoria alocada para determinado processo.
+
+ @param
+ int job_id - Identificacao do processo
+
+***********************************************************/
+
+void free_mem(int job_id);
