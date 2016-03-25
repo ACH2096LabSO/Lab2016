@@ -28,8 +28,4 @@ struct processLine  // Resolvi criar uma struct para a Fila em si para facilitar
 {
   process *first;
   process *last;
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> b93ba7a56373d6d4c373b97117c4d684ff3edc14
