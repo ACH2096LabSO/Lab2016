@@ -37,7 +37,6 @@ process *setProcess(char* line) //Função para transformar uma linha do arquivo
     return new;
 }
 
-<<<<<<< HEAD
 process processoAnterior(process p) //Função que recupera o processo anterior a um processo p
 {
     process aux=p;
@@ -46,9 +45,6 @@ process processoAnterior(process p) //Função que recupera o processo anterior 
     }
     return aux;    
 }
-
-=======
->>>>>>> b93ba7a56373d6d4c373b97117c4d684ff3edc14
 
 void setParameters(FILE *f)     //Função para configurar os parâmetros da simulação vindouros do arquivo de entrada no programa.
 {
@@ -115,8 +111,4 @@ int main(int argc, char *argv[]) // main para inicializar o programa. qualquer d
 // Seria interessante colocar o código para a execução da simulação aqui
     fclose(f);
     return 0;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b93ba7a56373d6d4c373b97117c4d684ff3edc14
