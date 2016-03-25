@@ -29,6 +29,28 @@ enum TYPE
     LOGICAL
 }
 
+/**********************************************************
+
+ int *PHYSICAL_MEMORY
+ int *LOGICAL_MEMORY
+
+ Ponteiros para as estruturas relativas as memorias
+ fisica e logica do simulador
+
+**********************************************************/
+
+int *PHYSICAL_MEMORY;
+int *LOGICAL_MEMORY;
+
+/**********************************************************
+ int **MEMORY_MAP_TABLE;
+
+ Tabela do mapeamento de memoria logica para memoria
+ fisica
+
+**********************************************************/
+
+int **MEMORY_MAP_TABLE;
 
 /**********************************************************
 
@@ -73,3 +95,4 @@ int init_physical_mem(int size, int num_page, int page_size, TYPE type);
 ***********************************************************/
 
 int allocate_mem(int size, int job_id);
+
