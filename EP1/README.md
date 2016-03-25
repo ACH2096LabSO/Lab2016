@@ -13,7 +13,7 @@ Projeto e implementação de um simulador orientado a eventos
 - Código fonte documentado;
 - Manual de compilação/execução.
 
-## Algortimos utilizados
+## Algoritmos utilizados
 
 - **CPU**: FCFS (*First-come, first-served*) e Round-robin;
 - **Memória**: paginação (sem swap);
