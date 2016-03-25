@@ -46,8 +46,8 @@ enum TYPE
 
  @return
  0  : Memoria inicializada com sucesso
- -1 : Tamanho de pagina maior que tamanho da memoria ERRO
  1  : Tamanho de paginas nao alcancado - pouca memoria
+ -1 : Tamanho de pagina maior que tamanho da memoria ERRO
 
 **********************************************************/
 
@@ -62,6 +62,13 @@ int init_physical_mem(int size, int num_page, int page_size, TYPE type);
  @param
  int size   - Tamanho da memoria
  int job_id - Identificacao do processo
+
+ @return
+ 0  : memoria alocada com sucesso
+ 1  : Memoria nao pode ser alocada - espaco insuficiente
+ 2  : Memoria nao pode ser alocada - espaco contiguo
+      insuficiente
+ -1 : Memoria nao pode ser alocada - ERRO
 
 ***********************************************************/
 
