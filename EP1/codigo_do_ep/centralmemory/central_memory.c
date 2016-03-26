@@ -6,33 +6,46 @@ int init_mem(int num_frames, int frame_size)
     if (num_frames < 1 || frame_size < 1) return -2;
     if (FREE_FRAMES_QUEUE) return 0;
 
-    FREE_FRAMES *queue = malloc(sizeof(FREE_FRAMES));
-    if (!queue) return -1;
+    FREE_FRAMES * queue = NULL;
+    if (!init_queue(&queue, num_frames, frame_size)) {
+        return -1;
+    }
+
+    FREE_FRAMES_QUEUE = queue;
+}
+
+int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
+{
+    if (num_frames < 1 || frame_size < 1) return 0;
+
+    FREE_FRAMES *aux_queue = malloc(sizeof(FREE_FRAMES));
+    if (!aux_queue) return 0;
 
     int i;
     for (i = 0; i < num_frames; i++) {
         FRAME *frame = malloc(sizeof(FRAME));
-        if (!frame) return -1;
+        if (!frame) return 0;
 
         frame->id = i;
         frame->address = 0;
+        frame->job_id = -1;
         frame->next = NULL;
 
-        if (!queue->head) {
-            queue->head = frame;
+        if (!aux_queue->head) {
+            aux_queue->head = frame;
         }
 
-        if (queue->tail) {
-            int last_address = queue->tail->address;
+        if (aux_queue->tail) {
+            int last_address = aux_queue->tail->address;
             frame->address = last_address + frame_size;
-            queue->tail->next = frame;
+            aux_queue->tail->next = frame;
         }
 
-        queue->tail = frame;
-        queue->length++;
+        aux_queue->tail = frame;
+        aux_queue->length++;
     }
 
-    FREE_FRAMES_QUEUE = queue;
+    *queue = aux_queue;
 
     return 1;
 }

@@ -12,7 +12,7 @@
 
 
                              Data de criacao: 24 Mar 2016
-                           Data de alteracao: 25 Mar 2016
+                           Data de alteracao: 26 Mar 2016
 
 **********************************************************/
 
@@ -44,6 +44,7 @@ typedef struct frames FREE_FRAMES;
 struct frame {
     int id;
     int address;
+    int job_id;
     FRAME *next;
 };
 
@@ -74,7 +75,7 @@ int *LOGICAL_MEMORY;
 
 **********************************************************/
 
-int **MEMORY_MAP_TABLE;
+FRAME **MEMORY_MAP_TABLE;
 
 /**********************************************************
 
@@ -90,8 +91,7 @@ FREE_FRAMES *FREE_FRAMES_QUEUE;
 
  int init_memory(int num_frames, int frame_size);
 
- Inicializa a memoria simulada. A depender da flag 'type',
- a memoria sera fisica ou logica
+ Inicializa a memoria simulada
 
  @param
  int num_frames  - Tamanho, em quadros, da memoria
@@ -106,6 +106,25 @@ FREE_FRAMES *FREE_FRAMES_QUEUE;
 **********************************************************/
 
 int init_mem(int num_frames, int frame_size);
+
+/**********************************************************
+
+ int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size);
+
+ Inicializa a fila de quadros disponiveis
+
+ @param
+ FREE_FRAMES **queue - Variavel de retorno da fila criada
+ int num_frames      - Tamanho, em quadros, da memoria
+ int frame_size      - Numero de paginas por quadro
+
+ @return
+ 1 : Fila criada com sucesso
+ 0 : Falha
+
+***********************************************************/
+
+int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size);
 
 /**********************************************************
 
