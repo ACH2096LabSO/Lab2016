@@ -25,11 +25,34 @@
  inicializada
 
 **********************************************************/
-enum TYPE
+
+typedef enum type TYPE;
+
+enum type
 {
     PHYSICAL,
     LOGICAL
-}
+};
+
+/**********************************************************
+
+ Estrutura da fila de molduras livres na memória
+
+***********************************************************/
+
+typedef struct frame FRAME;
+typedef struct frames FREE_FRAMES;
+
+struct frame {
+    int frame_id;
+    FRAME *next;
+};
+
+struct frames {
+    FRAME *head;
+    FRAME *tail;
+    int length;
+};
 
 /**********************************************************
 
@@ -100,7 +123,7 @@ int allocate_mem(int size, int job_id);
 /**********************************************************
 
  void free_mem(int job_id);
- 
+
  Libera memoria alocada para determinado processo.
 
  @param
