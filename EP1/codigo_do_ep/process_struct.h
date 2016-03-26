@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifndef PROCESS_H
+#define PROCESS_H
 typedef struct process process;
 
 struct process
@@ -29,3 +31,4 @@ struct processLine  // Resolvi criar uma struct para a Fila em si para facilitar
   process *first;
   process *last;
 };
+#endif

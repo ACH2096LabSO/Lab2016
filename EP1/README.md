@@ -21,8 +21,12 @@ Projeto e implementação de um simulador orientado a eventos
 
 ## Como compilar
 
-TODO
+```sh
+$ gcc simulador.c entrada.c -o simulador
+```
 
 ## Como executar
 
-TODO
+```sh
+$ ./simulador [arquivo de entrada]
+```
