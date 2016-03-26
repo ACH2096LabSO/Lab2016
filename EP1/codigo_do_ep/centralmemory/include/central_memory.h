@@ -11,8 +11,6 @@
   - Leonardo Rocha
 
 
-
-
                              Data de criacao: 24 Mar 2016
                            Data de alteracao: 25 Mar 2016
 
@@ -36,7 +34,7 @@ enum type
 
 /**********************************************************
 
- Estrutura da fila de molduras livres na memória
+ Estrutura da fila de molduras livres na memoria
 
 ***********************************************************/
 
@@ -79,27 +77,34 @@ int **MEMORY_MAP_TABLE;
 
 /**********************************************************
 
- int init_memory(int size, int num_page, int page_size,
-                 TYPE type)
+ FREE_FRAMES *FREE_FRAMES_QUEUE;
+
+ Fila de molduras disponiveis em memoria fisica
+
+***********************************************************/
+
+FREE_FRAMES *FREE_FRAMES_QUEUE;
+
+/**********************************************************
+
+ int init_memory(int num_frames, int frame_size);
 
  Inicializa a memoria simulada. A depender da flag 'type',
  a memoria sera fisica ou logica
 
  @param
- int size      - Tamanho da memoria
- int num_page  - Numero de paginas
- int page_size - Tamanho das paginas
- TYPE type     - Tipo da memoria
+ int num_frames  - Tamanho, em quadros, da memoria
+ int frame_size  - Numero de paginas por quadro
 
  @return
- 0  : Memoria inicializada com sucesso
- 1  : Tamanho de paginas nao alcancado - pouca memoria
- -1 : Tamanho de pagina maior que tamanho da memoria ERRO
- -2 : Tamanho de pagina fisica e logica diferentes ERRO
+  1 : Memoria inicializada com sucesso
+  0 : Memoria ja inicializada
+ -1 : Espaco insuficiente (simulador) - ERRO
+ -2 : Parametros invalidos
 
 **********************************************************/
 
-int init_mem(int size, int num_page, int page_size, TYPE type);
+int init_mem(int num_frames, int frame_size);
 
 /**********************************************************
 
