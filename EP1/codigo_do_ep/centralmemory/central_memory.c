@@ -10,11 +10,12 @@ int init_mem(int num_frames, int frame_size)
     if (!queue) return -1;
 
     int i;
-    for (i = 0; i < num_frames; i = i + frame_size) {
+    for (i = 0; i < num_frames; i++) {
         FRAME *frame = malloc(sizeof(FRAME));
         if (!frame) return -1;
 
-        frame->frame_id = i;
+        frame->id = i;
+        frame->address = 0;
         frame->next = NULL;
 
         if (!queue->head) {
@@ -22,11 +23,16 @@ int init_mem(int num_frames, int frame_size)
         }
 
         if (queue->tail) {
+            int last_address = queue->tail->address;
+            frame->address = last_address + frame_size;
             queue->tail->next = frame;
         }
 
         queue->tail = frame;
+        queue->length++;
     }
+
+    FREE_FRAMES_QUEUE = queue;
 
     return 1;
 }

@@ -42,7 +42,8 @@ typedef struct frame FRAME;
 typedef struct frames FREE_FRAMES;
 
 struct frame {
-    int frame_id;
+    int id;
+    int address;
     FRAME *next;
 };
 
