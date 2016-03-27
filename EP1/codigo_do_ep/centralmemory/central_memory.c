@@ -6,23 +6,22 @@ int init_mem(int num_frames, int frame_size)
     if (num_frames < 1 || frame_size < 1) return -2;
     if (FREE_FRAMES_QUEUE) return 0;
 
-    FREE_FRAMES * queue = NULL;
+    FREE_FRAMES *queue = NULL;
     if (!init_queue(&queue, num_frames, frame_size)) {
         return -1;
     }
-
     FREE_FRAMES_QUEUE = queue;
 
     FRAME **aux = NULL;
-    aux = malloc(num_frames * sizeof(FRAME*));
-    if (!aux) return -1;
-
+    if (!init_map(&aux, num_frames)) return -1;
     MEMORY_MAP_TABLE = aux;
+
+    return 1; 
 }
 
 int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
 {
-    if (num_frames < 1 || frame_size < 1) return 0;
+    if (num_frames < 1 || frame_size < 1 || !queue) return 0;
 
     FREE_FRAMES *aux_queue = malloc(sizeof(FREE_FRAMES));
     if (!aux_queue) return 0;
@@ -52,6 +51,18 @@ int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
     }
 
     *queue = aux_queue;
+
+    return 1;
+}
+
+int init_map(FRAME ***map, int num_frames)
+{
+    if (num_frames < 1|| !map) return 0;
+
+    FRAME **aux = malloc(num_frames * sizeof(FRAME*));
+    if (!aux) return 0;
+
+    *map = aux;
 
     return 1;
 }

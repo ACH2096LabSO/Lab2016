@@ -126,6 +126,25 @@ int init_mem(int num_frames, int frame_size);
 
 int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size);
 
+
+/**********************************************************
+
+ int init_map(FRAME ***map, int num_frames);
+
+ Inicializa a tabela de mapeamento
+
+ @param
+ FRAME ***map   - Ponteiro para o array de quadros alocados
+ int num_frames - Numero de quadros da memoria fisica
+
+ @return
+ 1 : Mapa criado com sucesso
+ 0 : Falha
+
+***********************************************************/
+
+int init_map(FRAME ***map, int num_frames);
+
 /**********************************************************
 
  int allocate_mem(int size, int job_id);
