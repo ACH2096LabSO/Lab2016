@@ -12,6 +12,12 @@ int init_mem(int num_frames, int frame_size)
     }
 
     FREE_FRAMES_QUEUE = queue;
+
+    FRAME **aux = NULL;
+    aux = malloc(num_frames * sizeof(FRAME*));
+    if (!aux) return -1;
+
+    MEMORY_MAP_TABLE = aux;
 }
 
 int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
