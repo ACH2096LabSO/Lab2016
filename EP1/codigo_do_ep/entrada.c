@@ -9,21 +9,22 @@
 
 process *setProcess(char* line)
 {
-    char *aux;
-    process *new = malloc(sizeof(process));
+	char *aux;
+	process *novo = (process*) malloc(sizeof(process));
 
-    aux = strtok(line, ";");
-    new->ID = atoi(aux);
-    aux = strtok(NULL, ";");
-    new->arrive_time = atoi(aux);
-    aux = strtok(NULL, ";");
-    new->CPU_b = atoi(aux);
-    aux = strtok(NULL, ";");
-    new->memory = atoi(aux);
-    aux = strtok(NULL, ";");
-    new->I_O = atoi(aux);
+	aux = strtok(line, ";");
+	novo->ID = atoi(aux);
+	aux = strtok(NULL, ";");
+	novo->arrive_time = atoi(aux);
+	aux = strtok(NULL, ";");
+	novo->CPU_b = atoi(aux);
+	aux = strtok(NULL, ";");
+	novo->memory = atoi(aux);
+	aux = strtok(NULL, ";");
+	novo->I_O = atoi(aux);
+	novo->next = NULL;
 
-    return new;
+	return novo;
 }
 
 process* processoAnterior(process *p)
@@ -55,23 +56,47 @@ void setParameters(FILE *f)
     return;
 }
 
-void setWaitingList(FILE *f)
+void setWaitingList(FILE *f) //Criar a waitingList por ordem de chegada
 {
-    char line[100];
-    process* aux;
-    int i;
+	char line[100];
+	process *aux, *aux2, *ant;
+	int i;
 
-    fscanf(f, "%s", line);
-    aux = setProcess(line);
-    waiting.first = aux;
-    waiting.last = aux;
+	fscanf(f, "%s", line);
+	aux = setProcess(line);
+	waiting.first = aux;
+	waiting.last = aux;
 
 
-    for(i = 1; i < n; i++)
-    {
-        fscanf(f, "%s", line);
-        aux = setProcess(line);
-        waiting.last->next = aux;
-        waiting.last = aux;
-    }
+	for (i = 1; i < n; i++)
+	{
+		fscanf(f, "%s", line);
+		aux = setProcess(line);
+		//Faz a inserção ordenada dos processos que são lidos
+		//Inserção na cabeça da fila
+		if (aux->arrive_time <= waiting.first->arrive_time) {
+			aux->next = waiting.first;
+			waiting.first = aux;
+		}
+		else {
+			ant = waiting.first;
+			aux2 = waiting.first;
+			//Percorre a fila de espera até achar a posição do novo processo pelo seu Arrive_time
+			while (aux2->next != NULL && aux->arrive_time > aux2->arrive_time) {
+				ant = aux2;
+				aux2 = aux2->next;
+			}
+			//Novo processo tem o tempo de chegada menor que o processo atual, então vira o proximo do anterior
+			if (aux->arrive_time < aux2->arrive_time) {
+				ant->next = aux;
+				aux->next = aux2;
+			}
+			//Novo processo tem o tempo de chegada maior que o processo atual, então vira o ultimo da fila
+			else {
+				aux->next = aux2->next;
+				aux2->next = aux;
+				waiting.last = aux;
+			}
+		}
+	}
 }
