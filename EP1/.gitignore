@@ -1,0 +1,7 @@
+*.swp
+*.swo
+*.swn
+*.o
+
+bin/*
+!bin/empty
