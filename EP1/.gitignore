@@ -4,4 +4,5 @@
 *.o
 
 bin/*
+!bin/
 !bin/empty
