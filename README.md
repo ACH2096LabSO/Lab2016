@@ -12,9 +12,9 @@ Familiarizar os alunos com uma implementação completa de um sistema operaciona
 
 ## Aulas
 
-|#|Data|Conteúdo|
+|Num|Data|Conteúdo|
 |-|----|--------|
-|1|||Apresentação da disciplina|
+|1||Apresentação da disciplina|
 |2||Introdução ao ambiente Linux (linha de comando)|
 |[3](Aula3/)||Como usar gcc e gdb; Git|
 |4|||
