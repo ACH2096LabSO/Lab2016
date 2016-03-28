@@ -1,4 +1,4 @@
-#include "process_struct.h"
+#include "cpu/include/process_struct.h"
 
 #ifndef ENTRADA_H
 #define ENTRADA_H

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "process_struct.h"
+#include "include/process_struct.h"
 
 //metodo que zera os tempos de espera um conjunto de processos para que eles sejam executados normalmente durante o round-robin
 void zeraTempoDeEspera(process *p){

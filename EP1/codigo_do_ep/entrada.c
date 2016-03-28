@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "entrada.h"
-#include "process_struct.h"
+#include "cpu/include/process_struct.h"
 
 process *setProcess(char* line)
 {
