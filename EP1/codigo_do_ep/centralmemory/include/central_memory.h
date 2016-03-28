@@ -12,7 +12,7 @@
 
 
                              Data de criacao: 24 Mar 2016
-                           Data de alteracao: 26 Mar 2016
+                           Data de alteracao: 27 Mar 2016
 
 **********************************************************/
 
@@ -31,6 +31,15 @@ enum type
     PHYSICAL,
     LOGICAL
 };
+
+
+/**********************************************************
+
+ Numero de paginas por quadro
+
+***********************************************************/
+
+int NUM_PAGES;
 
 /**********************************************************
 
@@ -126,7 +135,6 @@ int init_mem(int num_frames, int frame_size);
 
 int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size);
 
-
 /**********************************************************
 
  int init_map(FRAME ***map, int num_frames);
@@ -156,8 +164,8 @@ int init_map(FRAME ***map, int num_frames);
  int job_id - Identificacao do processo
 
  @return
-  0 : memoria alocada com sucesso
-  1 : Memoria nao pode ser alocada - espaco insuficiente
+  1 : memoria alocada com sucesso
+  0 : Memoria nao pode ser alocada - espaco insuficiente
  -1 : Memoria nao pode ser alocada - ERRO
 
 ***********************************************************/

@@ -16,7 +16,9 @@ int init_mem(int num_frames, int frame_size)
     if (!init_map(&aux, num_frames)) return -1;
     MEMORY_MAP_TABLE = aux;
 
-    return 1; 
+    NUM_PAGES = frame_size;
+
+    return 1;
 }
 
 int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
@@ -63,6 +65,38 @@ int init_map(FRAME ***map, int num_frames)
     if (!aux) return 0;
 
     *map = aux;
+
+    return 1;
+}
+
+int allocate_mem(int size, int job_id)
+{
+    if (size < 1 || job_id < 0) return -1;
+    if (!FREE_FRAMES_QUEUE || !MEMORY_MAP_TABLE) return -1;
+
+    int num_frames = size / NUM_PAGES;
+    if (size % NUM_PAGES) num_frames++;
+
+    int free_frames = FREE_FRAMES_QUEUE->length;
+    if (free_frames < num_frames) return 0;
+
+    int counter = num_frames;
+    while (FREE_FRAMES_QUEUE->head && counter) {
+        FRAME *frame = FREE_FRAMES_QUEUE->head;
+        FREE_FRAMES_QUEUE->head = frame->next;
+
+        frame->job_id = job_id;
+        frame->next = NULL;
+
+        MEMORY_MAP_TABLE[frame->id] = frame;
+        FREE_FRAMES_QUEUE->length--;
+
+        counter--;
+    }
+
+    if (!FREE_FRAMES_QUEUE->length) {
+        FREE_FRAMES_QUEUE->tail = NULL;
+    }
 
     return 1;
 }
