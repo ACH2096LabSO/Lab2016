@@ -5,7 +5,7 @@ Projeto e implementação de um simulador orientado a eventos
 
 ## Prazo
 
-**30/03/2016** (quarta-feira) - **Entrega somente individual via Tidia (SOMENTE!)**
+**30/03/2016** (quarta-feira) - **Entrega individual via Tidia (SOMENTE!)**
 
 ## Material de entrega
 
@@ -13,20 +13,34 @@ Projeto e implementação de um simulador orientado a eventos
 - Código fonte documentado;
 - Manual de compilação/execução.
 
-## Algoritmos utilizados
+## Algoritmos necessários 
 
 - **CPU**: FCFS (*First-come, first-served*) e Round-robin;
 - **Memória**: paginação (sem swap);
 - **I/O**: FIFO (*First in, first out*).
 
+## Estrutura planejada
+
+![Diagrama da estrutura do projeto](projeto/estrutura.png?raw=true)
+
+## Divisão do trabalho
+
+|Eventos|Escalonadores|Arquivos|Memória|Integração e Saída|
+|---|---|---|---|---|
+|Felipe|Giovanni|João|Brunno|Alexandre|
+|Edson|Pedro||Leo|Matheus|
+|Victor|Adriano||Eduardo||
+|Leonardo|||Gustavo||
+|Juliane|
+
 ## Como compilar
 
 ```sh
-$ gcc simulador.c entrada.c -o simulador
+$ make
 ```
 
 ## Como executar
 
 ```sh
-$ ./simulador [arquivo de entrada]
+$ ./bin/simulador [arquivo de entrada]
 ```
