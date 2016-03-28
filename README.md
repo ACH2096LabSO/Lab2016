@@ -1,4 +1,4 @@
-# Laboratório de Sistemas Operacionais 2016 (Turma 04)
+# Laboratório de SO 2016 (Turma 04)
 
 Familiarizar os alunos com uma implementação completa de um sistema operacional de código-fonte aberto, suscetível de ser usado, modificado e distribuído livremente.
 
