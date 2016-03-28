@@ -1,10 +1,20 @@
-Laboratório de LabSo
-2016
+# Laboratório de Sistemas Operacionais 2016 (Turma 04)
 
-|Simulador de Eventos|Criação de Escalonadores|Leitura de Arquivos|Mapa de Memoria e Paginação|Integração e Saída|
-|---|---|---|---|---|
-|Felipe|Giovanni|João|Brunno|Alexandre|
-|Edson|Pedro|   |Leo|Matheus|
-|Victor|Adriano|   |Eduardo|   |
-|Leonardo| |  |Gustavo|  |
-|Juliane|
+Familiarizar os alunos com uma implementação completa de um sistema operacional de código-fonte aberto, suscetível de ser usado, modificado e distribuído livremente.
+
+[Ementa (Jupiterweb)](https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=ACH2096)
+
+## Atividades
+
+|Atividade|Data|
+|---------|-----|
+|[EP1](EP1/)|30/03/2016|
+
+## Aulas
+
+|#|Data|Conteúdo|
+|-|----|--------|
+|1|||Apresentação da disciplina|
+|2||Introdução ao ambiente Linux (linha de comando)|
+|[3](Aula3/)||Como usar gcc e gdb; Git|
+|4|||
