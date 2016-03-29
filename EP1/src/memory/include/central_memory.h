@@ -1,3 +1,11 @@
+
+#ifndef MEMORY_H
+
+#define MEMORY_H
+
+
+
+
 /**********************************************************
 
  Header da memoria central CM
@@ -9,44 +17,13 @@
 
   - Gustavo Kishima
   - Leonardo Rocha
+  - Brunno Bettini
 
 
                              Data de criacao: 24 Mar 2016
-                           Data de alteracao: 27 Mar 2016
+                           Data de alteracao: 29 Mar 2016
 
 **********************************************************/
-
-
-/**********************************************************
-
- Tipo para definir se a memoria fisica ou logica sera
- inicializada
-
-**********************************************************/
-
-typedef enum type TYPE;
-
-enum type
-{
-    PHYSICAL,
-    LOGICAL
-};
-
-/**********************************************************
-
- Numero de quadros
-
-***********************************************************/
-
-int NUM_FRAMES;
-
-/**********************************************************
-
- Numero de paginas por quadro
-
-***********************************************************/
-
-int NUM_PAGES;
 
 /**********************************************************
 
@@ -69,19 +46,6 @@ struct frames {
     FRAME *tail;
     int length;
 };
-
-/**********************************************************
-
- int *PHYSICAL_MEMORY
- int *LOGICAL_MEMORY
-
- Ponteiros para as estruturas relativas as memorias
- fisica e logica do simulador
-
-**********************************************************/
-
-int *PHYSICAL_MEMORY;
-int *LOGICAL_MEMORY;
 
 /**********************************************************
  int **MEMORY_MAP_TABLE;
@@ -191,3 +155,5 @@ int allocate_mem(int size, int job_id);
 ***********************************************************/
 
 void free_mem(int job_id);
+
+#endif

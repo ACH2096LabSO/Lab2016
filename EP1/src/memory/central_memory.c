@@ -1,5 +1,8 @@
 #include <stdlib.h>
 #include "include/central_memory.h"
+#include "../entrada/entrada.h"
+#include "../messages/messages.h"
+
 
 int init_mem(int num_frames, int frame_size)
 {
@@ -16,8 +19,6 @@ int init_mem(int num_frames, int frame_size)
     if (!init_map(&aux, num_frames)) return -1;
     MEMORY_MAP_TABLE = aux;
 
-    NUM_FRAMES = num_frames;
-    NUM_PAGES = frame_size;
 
     return 1;
 }
@@ -27,6 +28,11 @@ int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
     if (num_frames < 1 || frame_size < 1 || !queue) return 0;
 
     FREE_FRAMES *aux_queue = malloc(sizeof(FREE_FRAMES));
+    aux_queue->head=NULL;
+    aux_queue->length=0;
+    aux_queue->tail=NULL;
+
+
     if (!aux_queue) return 0;
 
     int i;
@@ -39,17 +45,22 @@ int init_queue(FREE_FRAMES **queue, int num_frames, int frame_size)
         frame->job_id = -1;
         frame->next = NULL;
 
-        if (!aux_queue->head) {
+        if (aux_queue->head==NULL) {
             aux_queue->head = frame;
+            aux_queue->tail=  frame;
+        }
+        else{
+
+            if (aux_queue->tail) {
+                int last_address = aux_queue->tail->address;
+                frame->address = last_address + frame_size;
+                aux_queue->tail->next = frame;
+            }
+
+            aux_queue->tail = frame;
         }
 
-        if (aux_queue->tail) {
-            int last_address = aux_queue->tail->address;
-            frame->address = last_address + frame_size;
-            aux_queue->tail->next = frame;
-        }
 
-        aux_queue->tail = frame;
         aux_queue->length++;
     }
 
@@ -75,11 +86,14 @@ int allocate_mem(int size, int job_id)
     if (size < 1 || job_id < 0) return -1;
     if (!FREE_FRAMES_QUEUE || !MEMORY_MAP_TABLE) return -1;
 
-    int num_frames = size / NUM_PAGES;
-    if (size % NUM_PAGES) num_frames++;
+    int num_frames = size / mainMemoryPageSize;
+    if (size % mainMemoryPageSize) num_frames++;
 
     int free_frames = FREE_FRAMES_QUEUE->length;
-    if (free_frames < num_frames) return 0;
+    if (free_frames < num_frames) {
+        printOutOfMemory(FREE_FRAMES_QUEUE->length, num_frames, job_id);
+        return 0;
+    }
 
     int counter = num_frames;
     while (FREE_FRAMES_QUEUE->head && counter) {
@@ -109,12 +123,17 @@ void free_mem(int job_id)
     }
 
     int i;
-    for (i = 0; i < NUM_FRAMES; i++) {
+    for (i = 0; i < mainMemorySize; i++) {
         if (!MEMORY_MAP_TABLE[i]) continue;
         if (MEMORY_MAP_TABLE[i]->job_id != job_id) continue;
 
         FRAME *frame = MEMORY_MAP_TABLE[i];
         frame->job_id = -1;
+
+
+        if (!FREE_FRAMES_QUEUE->head) {
+            FREE_FRAMES_QUEUE->head = frame;
+        }
 
         if (FREE_FRAMES_QUEUE->tail) {
             FREE_FRAMES_QUEUE->tail->next = frame;
