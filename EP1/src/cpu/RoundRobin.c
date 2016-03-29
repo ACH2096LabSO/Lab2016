@@ -29,7 +29,7 @@ int *definirIntervalosIO (process *p, int numProcessos){
 	process *aux=p;
 	int i;
 	for (i=0; i<numProcessos; i++){
-		intervalos[i]=(int)floor(aux->CPU_b/aux->I_O);
+		intervalos[i]=(int)floor(aux->CPU_burst/aux->I_O);
 		aux=aux->next;
 	}
 	return intervalos;
@@ -49,12 +49,12 @@ void roundRobin(process *processo, int timeSlice, int opDuracao, int numProcesso
 		//roda o processo ate que uma das duas condicoes seja atingida:
 		//1-o processo terminou de executar
 		//2-o processo estourou sua timeSlice
-		while (tempoPassado<timeSlice && p->CPU_b>0 && p->tempoEspera_IO==0) {
+		while (tempoPassado<timeSlice && p->CPU_burst>0 && p->tempoEspera_IO==0) {
 			printf ("%s ",p->ID);
 			tempoPassado++;
-			p->CPU_b--;			
+			p->CPU_b--;
 			//reduz o tempo de espera de todos os processos cujo tempo de espera eh maior que zero
-			reduzTempoEspera(processo);	
+			reduzTempoEspera(processo);
 
 			if(p->CPU_b==0) {
 				//decrementa o contador i se o processo terminou de executar. Quando ele chegar a zero, significa que todos os processos foram executados.
@@ -64,7 +64,7 @@ void roundRobin(process *processo, int timeSlice, int opDuracao, int numProcesso
 			if (p->CPU_b % intervalosIO[indiceIntervalos] == 0) {	//se o processo faz uma chamada IO
 				//coloca o processo na fila de espera, ou seja, define um numero de clocks de cpu em que ele nao vai ser executado.
 				p->tempoEspera_IO=duracao_IO;
-				printf("\n O processo %d entrou da fila de espera \n", p->ID);	
+				printf("\n O processo %d entrou da fila de espera \n", p->ID);
 			}
 		}
 		//quando quaisquer das condições supracitadas sejam satisfeitas, o programa passa a execucao para outro processo

@@ -17,8 +17,9 @@ process *setProcess(char* line)
 	aux = strtok(NULL, ";");
 	novo->arrive_time = atoi(aux);
 	aux = strtok(NULL, ";");
-	novo->CPU_b = atoi(aux);
+	novo->CPU_burst = atoi(aux);
 	aux = strtok(NULL, ";");
+	novo->CPU_used = 0;
 	novo->memory = atoi(aux);
 	aux = strtok(NULL, ";");
 	novo->I_O = atoi(aux);
@@ -33,7 +34,7 @@ process* processoAnterior(process *p)
     while(aux->next!=p){
         aux=aux->next;
     }
-    return aux;    
+    return aux;
 }
 
 void setParameters(FILE *f)
