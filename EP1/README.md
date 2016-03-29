@@ -30,7 +30,7 @@ Projeto e implementação de um simulador orientado a eventos
 |Eventos|Escalonadores|Arquivos|Memória|Integração e Saída|
 |---|---|---|---|---|
 |Felipe|Giovanni|João|Brunno|Alexandre|
-|Edson|Pedro||Leo|Matheus|
+|~~Edson~~|Pedro||Leo|~~Matheus~~|
 |Victor|Adriano||Eduardo||
 |Leonardo|||Gustavo||
 |Juliane|
