@@ -4,14 +4,13 @@
 void simulate()
 {
     int finishedJobs = 0;
-    process* assignedJob = NULL;    //job atualmente assinalado à CPU
-    int currentTime = waiting.first->arrive_time;   //tempo atual de clock
+    int currentTime = ready.first->arrive_time;   //tempo atual de clock
 
     while(n > finishedJobs)    //enquanto ainda houver processo em uma das filas
     {
-        if(assignedJob == NULL)
+        if(active == NULL)
         {
-            //evento 1
+            //alocar CPU
         }
 
         //possiveis outros eventos vao aqui
