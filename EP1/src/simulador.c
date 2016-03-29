@@ -41,23 +41,19 @@ int simulate()
     int finishedJobs = 0;
 
     init_mem(mainMemorySize, mainMemoryPageSize);
-    testMem();
+    //testMem();
 
-
-
-
-
-    if (waitingProcessLine.first==NULL) return -1;
+    if (waitingProcessLine.first==NULL) {
+        printf("%s\n", "Nenhum processo na fila");
+        return 0;
+    }
 
     int currentTime = waitingProcessLine.first->arrive_time;   //tempo atual de clock
 
 
-
-
-
-
     while(numProcessos > finishedJobs)    //enquanto ainda houver processo em uma das filas
     {
+
         /*if(activeProcessLine!=NULL)
         {
             //alocar CPU

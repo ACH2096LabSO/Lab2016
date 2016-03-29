@@ -19,5 +19,6 @@ void printMemoryFrameQueue(FREE_FRAMES *freeFrames);
 void printFrame(FRAME *fr);
 void printMemoryMap(FRAME **memorymap);
 void printOutOfMemory(int available, int required, int jobId);
+void printFreedTables(int tables);
 
 #endif //MESSAGES_H

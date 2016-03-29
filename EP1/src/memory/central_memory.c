@@ -123,6 +123,7 @@ void free_mem(int job_id)
     }
 
     int i;
+    int freetables=0;
     for (i = 0; i < mainMemorySize; i++) {
         if (!MEMORY_MAP_TABLE[i]) continue;
         if (MEMORY_MAP_TABLE[i]->job_id != job_id) continue;
@@ -143,5 +144,8 @@ void free_mem(int job_id)
         FREE_FRAMES_QUEUE->length++;
 
         MEMORY_MAP_TABLE[i] = NULL;
+        freetables++;
     }
+
+
 }

@@ -90,8 +90,14 @@ void printOutOfMemory(int available, int required, int jobId){
 #ifdef _MESSAGES_
 
     printf("%s %i %s %i %s %i\n", "Não há memória - Disponível:", available, "Requerida:", required, "Processo:", jobId);
+#endif
+}
 
+void printFreedTables(int tables)
+{
+#ifdef _MESSAGES_
 
+    printf("%s %i\n", "Quadros liberados", tables);
 #endif
 }
 
