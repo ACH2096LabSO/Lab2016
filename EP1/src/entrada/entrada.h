@@ -1,5 +1,4 @@
-#include "../simulador.h"
-#include "../messages/messages.h"
+
 
 #include "../cpu/include/process_struct.h"
 
