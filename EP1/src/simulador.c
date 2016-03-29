@@ -1,29 +1,76 @@
 #include <stdio.h>
 
 #include "simulador.h"
-
 #include "entrada/entrada.h"
+#include "messages/messages.h"
+
+void testMem(){
+
+    //printMemoryFrameQueue(FREE_FRAMES_QUEUE);
+    //printMemoryMap(MEMORY_MAP_TABLE);
+    //allocate_mem(45, 1);
+    //allocate_mem(138, 2);
+    allocate_mem(301, 1);
+    allocate_mem(5, 2);
+    allocate_mem(12, 3);
+
+    free_mem(2);
+    allocate_mem(26, 4);
+    free_mem(3);
+    allocate_mem(648, 5);
+    allocate_mem(12, 6);
+    allocate_mem(3, 7);
+    free_mem(1);
+    allocate_mem(73, 8);
+    free_mem(6);
+    free_mem(7);
+    //printMemoryFrameQueue(FREE_FRAMES_QUEUE);
+    //printMemoryMap(MEMORY_MAP_TABLE);
+    free_mem(8);
+    free_mem(5);
+    free_mem(4);
+    printMemoryFrameQueue(FREE_FRAMES_QUEUE);
+    printMemoryMap(MEMORY_MAP_TABLE);
 
 
+}
 
 
-void simulate()
+int simulate()
 {
     int finishedJobs = 0;
-    int currentTime = readyProcessLine.first->arrive_time;   //tempo atual de clock
+
+    init_mem(mainMemorySize, mainMemoryPageSize);
+    testMem();
+
+
+
+
+
+    if (waitingProcessLine.first==NULL) return -1;
+
+    int currentTime = waitingProcessLine.first->arrive_time;   //tempo atual de clock
+
+
+
+
+
 
     while(numProcessos > finishedJobs)    //enquanto ainda houver processo em uma das filas
     {
-        /*if(activeProcessLine == NULL)
+        /*if(activeProcessLine!=NULL)
         {
             //alocar CPU
-        }
+        }*/
 
-        */
+
         //possiveis outros eventos vao aqui
 
         currentTime++;
+
+        if (currentTime==500) break;
     }
+    return 0;
 }
 
 int main(int argc, char *argv[]) // main para inicializar o programa. qualquer dúvida comentar no código
@@ -40,15 +87,12 @@ int main(int argc, char *argv[]) // main para inicializar o programa. qualquer d
     }
 
     setParameters(f);
-
     setWaitingList(f);
-
-    //simulate();
-
-
     fclose(f);
 
+    int resultSimulate = simulate();
 
-    return 0;
+
+    return resultSimulate;
 
 }
