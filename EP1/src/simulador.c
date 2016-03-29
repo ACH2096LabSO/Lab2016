@@ -1,18 +1,25 @@
 #include <stdio.h>
-#include "entrada.h"
+
+#include "simulador.h"
+
+#include "entrada/entrada.h"
+
+
+
 
 void simulate()
 {
     int finishedJobs = 0;
-    int currentTime = ready.first->arrive_time;   //tempo atual de clock
+    int currentTime = readyProcessLine.first->arrive_time;   //tempo atual de clock
 
-    while(n > finishedJobs)    //enquanto ainda houver processo em uma das filas
+    while(numProcessos > finishedJobs)    //enquanto ainda houver processo em uma das filas
     {
-        if(active == NULL)
+        /*if(activeProcessLine == NULL)
         {
             //alocar CPU
         }
 
+        */
         //possiveis outros eventos vao aqui
 
         currentTime++;
@@ -22,14 +29,13 @@ void simulate()
 int main(int argc, char *argv[]) // main para inicializar o programa. qualquer dúvida comentar no código
 {
     FILE *f = NULL;
-    int i;
 
 
     f = fopen(argv[1], "r");
 
     if(f == NULL)
     {
-        printf("Não foi possível abrir o arquivo de entrada.\n");
+        printf("%s\n","Não foi possível abrir o arquivo de entrada.");
         return 0;
     }
 
@@ -37,8 +43,12 @@ int main(int argc, char *argv[]) // main para inicializar o programa. qualquer d
 
     setWaitingList(f);
 
-    simulate();
+    //simulate();
+
 
     fclose(f);
+
+
     return 0;
+
 }
