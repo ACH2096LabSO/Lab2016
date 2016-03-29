@@ -156,4 +156,16 @@ int allocate_mem(int size, int job_id);
 
 void free_mem(int job_id);
 
+
+/*********************************************
+ *
+ * int framesNeeded(int size);
+ *
+ * Calcula quantos frames um processo precisa para rodar
+ *
+ * @param
+ * int size - Necessidade de memoria do processo
+ */
+int framesNeeded(int size);
+
 #endif

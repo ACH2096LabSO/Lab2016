@@ -3,6 +3,14 @@
 #include "simulador.h"
 #include "entrada/entrada.h"
 #include "messages/messages.h"
+#include "utils/utils.h"
+#include "events/EV1-NewJobs.h"
+#include "events/EV2-MemoryAloc.h"
+#include "events/EV3-CPUExec.h"
+#include "events/EV4-ReleaseCPU.h"
+#include "events/EV5-IOExecution.h"
+#include "events/EV6-ReleaseIO.h"
+#include "events/EV7-ReleaseAll.h"
 
 void testMem(){
 
@@ -38,8 +46,7 @@ void testMem(){
 
 int simulate()
 {
-    int finishedJobs = 0;
-
+    finishedJobs = 0;
     init_mem(mainMemorySize, mainMemoryPageSize);
     //testMem();
 
@@ -48,23 +55,25 @@ int simulate()
         return 0;
     }
 
-    int currentTime = waitingProcessLine.first->arrive_time;   //tempo atual de clock
+    currentTime = waitingProcessLine.first->arrive_time;   //tempo atual de clock
 
-
-    while(numProcessos > finishedJobs)    //enquanto ainda houver processo em uma das filas
+    while(numProcessos  > finishedJobs)    //enquanto ainda houver processo em uma das filas
     {
 
-        /*if(activeProcessLine!=NULL)
-        {
-            //alocar CPU
-        }*/
 
 
-        //possiveis outros eventos vao aqui
+        EV1Execute();
+        EV2Execute();
+        EV3Execute();
+        EV4Execute();
+        EV5Execute();
+        EV6Execute();
+        EV7Execute();
+
 
         currentTime++;
 
-        if (currentTime==500) break;
+        if (currentTime==300) return 0;
     }
     return 0;
 }

@@ -101,3 +101,9 @@ void printFreedTables(int tables)
 #endif
 }
 
+void printTransferMessage(char* action, int currenttime, processLine origin, processLine destination, process *p){
+#ifdef _MESSAGES_
+    printf("%s %i %s %i %s %s %s %s %s %s \n", "Tempo:", currenttime, "Processo:", p->ID, "movido de", origin.name, "para", destination.name, "Motivo:", action);
+#endif
+}
+

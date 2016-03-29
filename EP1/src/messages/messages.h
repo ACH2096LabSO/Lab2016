@@ -20,5 +20,6 @@ void printFrame(FRAME *fr);
 void printMemoryMap(FRAME **memorymap);
 void printOutOfMemory(int available, int required, int jobId);
 void printFreedTables(int tables);
+void printTransferMessage(char* action, int currenttime, processLine origin, processLine destination, process *p);
 
 #endif //MESSAGES_H

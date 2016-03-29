@@ -79,14 +79,21 @@ void setWaitingList(FILE *f) //Criar a waitingList por ordem de chegada
     if (res>0) {
 
         aux = setProcess(line);
+        waitingProcessLine.name="Entrada";
         waitingProcessLine.first = aux;
         waitingProcessLine.last = aux;
+        readyProcessLine.name="Prontos";
         readyProcessLine.first=NULL;
         readyProcessLine.last=NULL;
+        IOProcessLine.name="IO";
         IOProcessLine.first=NULL;
         IOProcessLine.last=NULL;
+        activeProcessLine.name="Ativos";
         activeProcessLine.first=NULL;
         activeProcessLine.last=NULL;
+        cancelledProcessLine.name="Cancelados";
+        cancelledProcessLine.first=NULL;
+        cancelledProcessLine.last=NULL;
 
         for (i = 1; i < numProcessos; i++)
         {

@@ -81,13 +81,19 @@ int init_map(FRAME ***map, int num_frames)
     return 1;
 }
 
+
+int framesNeeded(int size){
+    int num_frames = size / mainMemoryPageSize;
+    if (size % mainMemoryPageSize) num_frames++;
+    return  num_frames;
+}
+
 int allocate_mem(int size, int job_id)
 {
     if (size < 1 || job_id < 0) return -1;
     if (!FREE_FRAMES_QUEUE || !MEMORY_MAP_TABLE) return -1;
 
-    int num_frames = size / mainMemoryPageSize;
-    if (size % mainMemoryPageSize) num_frames++;
+    int num_frames = framesNeeded(size);
 
     int free_frames = FREE_FRAMES_QUEUE->length;
     if (free_frames < num_frames) {
@@ -146,6 +152,7 @@ void free_mem(int job_id)
         MEMORY_MAP_TABLE[i] = NULL;
         freetables++;
     }
+    printFreedTables(freetables);
 
 
 }

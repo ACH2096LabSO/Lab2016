@@ -10,8 +10,9 @@
 
 #define _MESSAGES_ //comentar para nao imprimir as mensagens sobre o status das variaveis
 
-
+int currentTime;
 int simulate();
 int main(int argc, char *argv[]);
+int finishedJobs;
 
 #endif //EP1_SIMULADOR_H

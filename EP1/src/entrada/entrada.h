@@ -7,10 +7,11 @@
 
 #define ENTRADA_H
 
-processLine readyProcessLine;         //lista dos processos na fila de "Pronto"
+processLine readyProcessLine;         //lista dos processos na fila de "Pronto" -  processos já tem memória e tudo para executar
 processLine IOProcessLine;            //lista dos processos na fila de "I/O"
-processLine waitingProcessLine;       //lista dos processos na fila de "Waiting"
-processLine activeProcessLine;        //lista dos processos sendo executados
+processLine waitingProcessLine;       //lista dos processos na fila de "Waiting ou seja - entrada de novos processos"
+processLine activeProcessLine;        //lista dos processos sendo executados -  os processos nessa fila estao aguardando por memoria
+processLine cancelledProcessLine;        //lista dos processos cancelados pois requisitam mais memoria do que o sistema possui
 
 int mainMemorySize; // Tamanho da memória principal (em número de quadros)
 int mainMemoryPageSize;       // Tamanho dos quadros da memória

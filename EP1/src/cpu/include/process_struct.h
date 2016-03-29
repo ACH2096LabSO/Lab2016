@@ -5,6 +5,7 @@
 #ifndef PROCESS_H
 #define PROCESS_H
 
+
 typedef struct process process;
 
 struct process
@@ -31,6 +32,7 @@ typedef struct processLine processLine;
 
 struct processLine  // Resolvi criar uma struct para a Fila em si para facilitar o acesso ao último elemento, algo que acredito que será útil para a implementação
 {
+    char* name;
     process *first;
     process *last;
 };
