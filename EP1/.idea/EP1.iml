@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/entrada/entrada.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/entrada/entrada.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/simulador.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/memory/central_memory.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/messages/messages.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/messages/messages.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/simulador.c" isTestSource="false" />
