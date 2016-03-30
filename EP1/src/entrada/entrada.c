@@ -66,27 +66,32 @@ void addProcessLine(process *processo){
                 cpuUses++;
             }
         }
-
-
-
         cpuUses=0;
+
+
         if (ios<processo->I_O){
-            processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
-            novoExec->ID = execID;
-            novoExec->type=EXEC_IO;
-            novoExec->next=NULL;
+
+            int tempos=0;
+            while (tempos<ioTimeDuration){
+                processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
+                novoExec->ID = execID;
+                novoExec->type=EXEC_IO;
+                novoExec->next=NULL;
+                if (!(processo->processList==NULL)){
+                    processExecList *p = processo->processList;
+                    while (p->next!=NULL){
+                        p=p->next;
+                    }
+                    p->next = novoExec;
+                }
+                else{
+                    processo->processList = novoExec;
+                }
+                tempos++;
+            }
             ios++;
             execID++;
-            if (!(processo->processList==NULL)){
-                processExecList *p = processo->processList;
-                while (p->next!=NULL){
-                    p=p->next;
-                }
-                p->next = novoExec;
-            }
-            else{
-                processo->processList = novoExec;
-            }
+
         }
     }
 }
