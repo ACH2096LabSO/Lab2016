@@ -31,7 +31,7 @@ Projeto e implementação de um simulador orientado a eventos
 |---|---|---|---|---|
 |Felipe|Giovanni|João|Brunno|Alexandre|
 |~~Edson~~|Pedro||Leo|~~Matheus~~|
-|Victor|Adriano||Eduardo||
+|Victor|Adriano||Eduardo|Cian|
 |Leonardo|||Gustavo||
 |Juliane|
 

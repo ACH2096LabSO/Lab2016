@@ -74,7 +74,7 @@ int simulate()
 
 
         currentTime++;
-
+		generateResult(currenttime, readyProcessLine);
         //if (currentTime==300) return 0;
     }
     return 0;
