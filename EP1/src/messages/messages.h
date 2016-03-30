@@ -23,5 +23,5 @@ void printOutOfMemory(int available, int required, int jobId);
 void printFreedTables(int tables);
 void printTransferMessage(char* action, int currenttime, processLine origin, processLine destination, process *p);
 void generateLog(char* text);
-void generateResult(int currenttime, processLine pline)
+void generateResult(int currenttime, processLine pline);
 #endif //MESSAGES_H
