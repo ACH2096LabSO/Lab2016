@@ -12,7 +12,7 @@ void EV6Execute(){
     if (IOProcessLine.first){
         if (IOProcessLine.first->processList){
             if (IOProcessLine.first->processList->type==EXEC_CPU){
-                transferProcess("EV4", currentTime, &IOProcessLine, &readyProcessLine);
+                transferProcess("EV6", currentTime, &IOProcessLine, &readyProcessLine);
             }
         }
     }

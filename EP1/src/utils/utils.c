@@ -8,6 +8,10 @@
 
 
 void transferProcess(char* action, int currentTime, processLine *origin, processLine *destination){
+
+    if (currentTime==19)
+        printf("%s", "erro aqui\n");
+
     process *p;
     p = origin->first;
     origin->first=p->next;
@@ -26,6 +30,13 @@ void transferProcess(char* action, int currentTime, processLine *origin, process
         destination->first=p;
         destination->last=p;
     }
+
+    if (currentTime==19){
+        printProcessList("ori",*origin, 1);
+        printProcessList("dest",*destination, 1);
+    }
+
+
     printTransferMessage(action, currentTime, *origin, *destination, p);
 
 }
