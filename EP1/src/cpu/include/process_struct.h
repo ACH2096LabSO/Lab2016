@@ -10,6 +10,11 @@ typedef struct process process;
 
 typedef struct processExecList processExecList;
 
+
+static const int EXEC_CPU =0;
+static const int EXEC_IO  =1;
+
+
 struct processExecList{
     int ID;
     int type; // 0 seria CPU 1 seria IO, assim sabemos se o processo fica na fila de IO ou passa para a de CPU e vie versa

@@ -29,4 +29,6 @@ void setParameters(FILE *f); //Função para configurar os parâmetros da simula
 
 void setWaitingList(FILE *f); //Função para criar a waitingProcessLine list de processos, sendo que waitingProcessLine.first é o que chegou primeiro, portanto o que deve sair primeiro.
 
+void addProcessLine(process *processo); // funcção que cria a lista de execução de um processo - dizendo quando ele deve fazer cpu e quando deve fazer IO
+
 #endif
