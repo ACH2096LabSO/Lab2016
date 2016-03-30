@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "messages/messages.h"
 
 ///FIFO
 
@@ -101,7 +102,9 @@ int calculoDeTempoDeEspera(int procs,Processo *p){
             espera[i]+=aux->Tempo;
         }
     }
-    printf("\nProcesso\t\tTempo de CPU\t\tTempo de Espera\t\tTempo de Resposta");
+	ret = sprintf(msg, "\nProcesso\t\tTempo de CPU\t\tTempo de Espera\t\tTempo de Resposta");
+    generateLog(msg);
+	printf(msg);
 
     ///Tempo de Respota
     aux = p;
@@ -110,14 +113,22 @@ int calculoDeTempoDeEspera(int procs,Processo *p){
         resposta[i]=aux->Tempo+espera[i];
         mediaEspera+=espera[i];
         mediaTempoResp+=resposta[i];
-        printf("\nP[%d]\t\t\t%d\t\t\t%d\t\t\t%d",i+1,aux->Tempo,espera[i],resposta[i]);
+		ret = sprintf(msg,"\nP[%d]\t\t\t%d\t\t\t%d\t\t\t%d",i+1,aux->Tempo,espera[i],resposta[i]);
+		generateLog(msg);
+        printf(msg);
         aux = aux->prox;
     }
 
     mediaEspera/=i;
     mediaTempoResp/=i;
-    printf("\n\nTempo medio de espera: %d",mediaEspera);
-    printf("\nTempo medio de resposta: %d",mediaTempoResp);
+	
+    ret = sprintf(msg ,"\n\nTempo medio de espera: %d",mediaEspera);
+	generateLog(msg);
+	printf(msg);
+	
+	ret = sprintf(msg ,"\nTempo medio de resposta: %d",mediaTempoResp);
+	generateLog(msg);
+	printf(msg);
 
     return 0;
 }
