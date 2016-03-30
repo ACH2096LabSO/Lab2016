@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 #include "simulador.h"
 #include "entrada/entrada.h"
@@ -11,6 +12,7 @@
 #include "events/EV5-IOExecution.h"
 #include "events/EV6-ReleaseIO.h"
 #include "events/EV7-ReleaseAll.h"
+
 
 void testMem(){
 
@@ -96,6 +98,8 @@ int main(int argc, char *argv[]) // main para inicializar o programa. qualquer d
     fclose(f);
 
     int resultSimulate = simulate();
+
+    sleep(3);
 
 
     return resultSimulate;

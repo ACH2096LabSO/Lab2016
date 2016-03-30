@@ -22,16 +22,24 @@ void printConfig(){
 }
 
 
-void printProcess(process* proc){
+void printProcess(process* proc, int printExecList){
 
 #ifdef _MESSAGES_
     printf("%s %i %s %i %s %i %s %i %s %i %s %i %s %i\n", "Processo:", proc->ID, "Arrive Time:", proc->arrive_time, "CPU Burst:", proc->CPU_burst,
            "CPU Used:", proc->CPU_used, "Memory:", proc->memory, "Total IO:", proc->I_O, "IO Used:", proc->I_O_used);
+    if (printExecList==1){
+        processExecList *p = proc->processList;
+        while (p!=NULL){
+            printf("%s %i %s %i\n", "     Exec:", p->ID, "Type:", p->type);
+            p=p->next;
+        }
+    }
+
 #endif
 
 }
 
-void printProcessList(char* lineName, processLine pline){
+void printProcessList(char* lineName, processLine pline, int printExecList){
 
 
 #ifdef _MESSAGES_
@@ -39,7 +47,7 @@ void printProcessList(char* lineName, processLine pline){
     if (pline.first==NULL) return;
     process *p = pline.first;
     while (p!=NULL){
-        printProcess(p);
+        printProcess(p, printExecList);
         p=p->next;
     }
 #endif

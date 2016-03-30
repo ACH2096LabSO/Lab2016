@@ -28,6 +28,91 @@ process *setProcess(char* line)
     novo->I_O = atoi(aux);
     novo->I_O_used=0;
     novo->next = NULL;
+    novo->processList = NULL;
+
+    int cpus=0;
+    int ios=0;
+    int cpuUses=0;
+    int execID=0;
+
+    int esperaIO = 0;
+    if (novo->I_O >0){
+        esperaIO = novo->CPU_burst / novo->I_O;
+    }
+
+    while ((novo->CPU_burst>cpus) || (novo->I_O >ios)){
+
+
+        if (esperaIO==0){
+            if (cpus<novo->CPU_burst){
+                processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
+                novoExec->ID = execID;
+                novoExec->type=0;
+                novoExec->next=NULL;
+                cpus++;
+                execID++;
+                if (!(novo->processList==NULL)){
+                    processExecList *p = novo->processList;
+                    while (p->next!=NULL){
+                        p=p->next;
+                    }
+                    p->next = novoExec;
+                }
+                else{
+                    novo->processList = novoExec;
+                }
+            }
+        }
+        else{
+            while (cpuUses< esperaIO){
+                if (cpus<novo->CPU_burst){
+                    processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
+                    novoExec->ID = execID;
+                    novoExec->type=0;
+                    novoExec->next=NULL;
+                    cpus++;
+                    execID++;
+                    if (!(novo->processList==NULL)){
+                        processExecList *p = novo->processList;
+                        while (p->next!=NULL){
+                            p=p->next;
+                        }
+                        p->next = novoExec;
+                    }
+                    else{
+                        novo->processList = novoExec;
+                    }
+                }
+                cpuUses++;
+            }
+        }
+
+
+
+        cpuUses=0;
+        if (ios<novo->I_O){
+            processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
+            novoExec->ID = execID;
+            novoExec->type=1;
+            novoExec->next=NULL;
+            ios++;
+            execID++;
+            if (!(novo->processList==NULL)){
+                processExecList *p = novo->processList;
+                while (p->next!=NULL){
+                    p=p->next;
+                }
+                p->next = novoExec;
+            }
+            else{
+                novo->processList = novoExec;
+            }
+        }
+
+
+
+
+    }
 
     return novo;
 }
@@ -130,6 +215,6 @@ void setWaitingList(FILE *f) //Criar a waitingList por ordem de chegada
         }
     }
 
-    printProcessList("Waiting List", waitingProcessLine);
+    printProcessList("Waiting List", waitingProcessLine,1);
 
 }

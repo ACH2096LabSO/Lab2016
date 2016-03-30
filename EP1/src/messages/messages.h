@@ -13,8 +13,8 @@
 #define MESSAGES_H
 
 void printConfig();
-void printProcess(process* proc);
-void printProcessList(char* lineName, processLine pline);
+void printProcess(process* proc, int printExecList);
+void printProcessList(char* lineName, processLine pline,  int printExecList);
 void printMemoryFrameQueue(FREE_FRAMES *freeFrames);
 void printFrame(FRAME *fr);
 void printMemoryMap(FRAME **memorymap);
