@@ -1,6 +1,5 @@
-//QUALQUER D�VIDA OU SUGEST�O COMENTEM NO C�DIGO
-//N�o fiz muitos testes mas n�o deve dar maiores problemas
-
+//QUALQUER DUVIDA OU SUGESTAO COMENTEM NO CODIGO
+//Nao fiz muitos testes mas nao deve dar maiores problemas
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,19 +9,23 @@
 
 
 void addProcessLine(process *processo){
+
     int cpus=0;
     int ios=0;
     int cpuUses=0;
     int execID=0;
 
+    // Tempo de processamento entre atividades de IO
     int esperaIO = 0;
     if (processo->I_O >0){
         esperaIO = processo->CPU_burst / processo->I_O;
     }
 
     while ((processo->CPU_burst>cpus) || (processo->I_O >ios)){
-
-
+        /**
+         * Caso o processo não realize IO, apenas preencher a lista de
+         * execucao. Cada tempo de clock eh representado por uma entrada.
+         */
         if (esperaIO==0){
             if (cpus<processo->CPU_burst){
                 processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
@@ -45,6 +48,9 @@ void addProcessLine(process *processo){
         }
         else{
             while (cpuUses< esperaIO){
+                /**
+                 * Insere tempos de clocks que precedem uma atividade de IO
+                 * */
                 if (cpus<processo->CPU_burst){
                     processExecList  *novoExec = (processExecList*) malloc(sizeof(processExecList));
                     novoExec->ID = execID;
@@ -68,7 +74,9 @@ void addProcessLine(process *processo){
         }
         cpuUses=0;
 
-
+        /**
+         * Insere tempos de clock correspondentes a uma atividade de IO
+         * */
         if (ios<processo->I_O){
 
             int tempos=0;
