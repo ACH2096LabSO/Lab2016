@@ -75,15 +75,7 @@ int simulate()
 
         currentTime++;
 
-        if (currentTime==10000){
-            printMemoryMap(MEMORY_MAP_TABLE);
-            printProcessList("espera", waitingProcessLine, 0);
-            printProcessList("Ativos", readyProcessLine, 1);
-            printProcessList("io ", IOProcessLine, 1);
-            sleep(3);
-            return 0;
-        }
-
+        //if (currentTime==300) return 0;
     }
     return 0;
 }

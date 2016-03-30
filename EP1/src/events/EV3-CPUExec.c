@@ -19,20 +19,11 @@ void EV3Execute(){
     //se tiver algo a processar
     if (readyProcessLine.first){
 
-        process *p = readyProcessLine.first;
-
-
         //execução de CPU
         //aqui deve executar round robin para ver se ele deve ir para o fim da fila ou algo do tipo
         if (readyProcessLine.first->processList){
             if (readyProcessLine.first->processList->type==EXEC_CPU){
-
-                processExecList *e;
-                e= readyProcessLine.first->processList;
-
-
                 readyProcessLine.first->processList = readyProcessLine.first->processList->next;
-                printf("%s %i %s %i \n", "EV3 CPU consumido Processo:", p->ID, " ID da lista ", e->ID);
             }
         }
     }
