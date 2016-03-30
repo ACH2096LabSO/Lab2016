@@ -18,14 +18,14 @@ void EV3Execute(){
 
     //se tiver algo a processar
     if (readyProcessLine.first){
-        if (readyProcessLine.first->processList->type==EXEC_CPU){
-            
+
+        //execução de CPU
+        //aqui deve executar round robin para ver se ele deve ir para o fim da fila ou algo do tipo
+        if (readyProcessLine.first->processList){
+            if (readyProcessLine.first->processList->type==EXEC_CPU){
+                readyProcessLine.first->processList = readyProcessLine.first->processList->next;
+            }
         }
-
-
-
     }
-
-
     return;
 }

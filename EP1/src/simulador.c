@@ -75,7 +75,7 @@ int simulate()
 
         currentTime++;
 
-        if (currentTime==300) return 0;
+        //if (currentTime==300) return 0;
     }
     return 0;
 }
