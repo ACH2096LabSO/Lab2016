@@ -29,11 +29,11 @@ Projeto e implementação de um simulador orientado a eventos
 
 |Eventos|Escalonadores|Arquivos|Memória|Integração e Saída|
 |---|---|---|---|---|
-|Felipe|Giovanni|João|Brunno|Alexandre|
+|Felipe|Giovanni|João|Brunno|~~Alexandre~~|
 |~~Edson~~|Pedro||Leo|~~Matheus~~|
 |Victor|Adriano||Eduardo|Cian|
 |Leonardo|||Gustavo||
-|Juliane|
+|~~Juliane~~|
 
 ## Como compilar
 
