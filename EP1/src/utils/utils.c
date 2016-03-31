@@ -31,10 +31,7 @@ void transferProcess(char* action, int currentTime, processLine *origin, process
         destination->last=p;
     }
 
-    if (currentTime==19){
-        printProcessList("ori",*origin, 1);
-        printProcessList("dest",*destination, 1);
-    }
+    p->CPU_used=0;
 
 
     printTransferMessage(action, currentTime, *origin, *destination, p);

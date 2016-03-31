@@ -152,7 +152,7 @@ void free_mem(int job_id)
         MEMORY_MAP_TABLE[i] = NULL;
         freetables++;
     }
-    printFreedTables(freetables);
+    printFreedTables(freetables, job_id);
 
 
 }
