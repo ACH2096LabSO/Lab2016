@@ -113,6 +113,7 @@ int calculoDeTempoDeEspera(int procs,Processo *p){
         resposta[i]=aux->Tempo+espera[i];
         mediaEspera+=espera[i];
         mediaTempoResp+=resposta[i];
+        	///Calculo para tempos de CPU, deverá ser utilizado apenas para testes de validação
 		ret = sprintf(msg,"\nP[%d]\t\t\t%d\t\t\t%d\t\t\t%d",i+1,aux->Tempo,espera[i],resposta[i]);
 		generateLog(msg);
         printf(msg);
@@ -121,7 +122,8 @@ int calculoDeTempoDeEspera(int procs,Processo *p){
 
     mediaEspera/=i;
     mediaTempoResp/=i;
-	
+    
+	///Calculo para tempos de CPU, deverá ser utilizado apenas para testes de validação	
     ret = sprintf(msg ,"\n\nTempo medio de espera: %d",mediaEspera);
 	generateLog(msg);
 	printf(msg);
