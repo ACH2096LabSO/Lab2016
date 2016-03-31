@@ -2,6 +2,7 @@
 // Created by brunno on 29/03/16.
 //
 
+#include <zconf.h>
 #include "messages.h"
 #include "../entrada/entrada.h"
 
@@ -164,7 +165,9 @@ void generateOutputFile(){
 #ifdef _MESSAGES_
     printf("%s \n", "Salvando arquivo de saída");
 #endif
+    sleep(2);
     fclose(outfile);
+    sleep(2);
 
 };
 
