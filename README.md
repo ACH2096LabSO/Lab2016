@@ -16,6 +16,6 @@ Familiarizar os alunos com uma implementação completa de um sistema operaciona
 |---|----|--------|
 |1|19/02/2016|Apresentação da disciplina|
 |2|26/02/2016|Introdução ao ambiente Linux (linha de comando)|
-|[3](Aula3/)|11/03/2016|Usando gcc e gdb; Git + GitHub|
+|[3](Aulas/Aula-3/)|11/03/2016|Usando gcc e gdb; Git + GitHub|
 |4|18/03/2016||
 |5|01/04/2016|Sincronização de processos e pthreads (POSIX threads)|
