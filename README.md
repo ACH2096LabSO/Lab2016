@@ -19,3 +19,4 @@ Familiarizar os alunos com uma implementação completa de um sistema operaciona
 |[3](Aulas/Aula-3/)|11/03/2016|Usando gcc e gdb; Git + GitHub|
 |4|18/03/2016||
 |[5](Aulas/Aula-5/)|01/04/2016|Sincronização de processos e pthreads (POSIX threads)|
+|6|08/04/2016|Algoritmo de sincronização 3 (bandeira + vez); mutex; semáforo|
