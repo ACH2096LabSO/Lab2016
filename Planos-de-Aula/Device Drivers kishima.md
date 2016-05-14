@@ -1,5 +1,5 @@
 # Plano de Aula
-### Tema: Drivers de Dispositivos - Introdução, <driver específico> e prática
+### Tema: Drivers de Dispositivos - Introdução <driver específico> e prática
 
 ### Objetivo
 Apresentar uma introdução sobre os drivers de dispositivos no Linux,
