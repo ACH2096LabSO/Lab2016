@@ -11,6 +11,7 @@ driver específico e alguma prática básica com criação de driver.
 
 * http://www.oreilly.com/openbook/linuxdrive3/book - O’Reilly Device Drivers 3a Edição
 * http://www.makelinux.net/kernel_map/ - Mapa interativo do Kernel
+* http://gauss.ececs.uc.edu/Courses/c4022/code/memory/understanding.pdf - Understanding Linux Kernel 3a Edição
 
 #### Conceitos
 
