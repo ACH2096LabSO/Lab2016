@@ -6,6 +6,7 @@
 #include "../simulador.h"
 #include "../entrada/entrada.h"
 #include "../memory/include/central_memory.h"
+#include "../messages/messages.h"
 
 void EV7Execute(){
     if (IOProcessLine.first){
@@ -19,7 +20,8 @@ void EV7Execute(){
             }
             free_mem(p->ID);
             finishedJobs ++;
-            printf("%s %i %s %i \n", "Processo finalizado em IO ID:", p->ID, " no tempo ", currentTime);
+
+            printReleaseProcessIO(p);
         }
     }
 
@@ -33,7 +35,7 @@ void EV7Execute(){
             }
             free_mem(p->ID);
             finishedJobs ++;
-            printf("%s %i %s %i \n", "Processo finalizado em CPU ID:", p->ID, " no tempo ", currentTime);
+            printReleaseProcessCPU(p);
         }
     }
     return;

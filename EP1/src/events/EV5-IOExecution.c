@@ -4,6 +4,7 @@
 
 #include "EV5-IOExecution.h"
 #include "../entrada/entrada.h"
+#include "../messages/messages.h"
 
 void EV5Execute(){
 
@@ -22,9 +23,7 @@ void EV5Execute(){
                 processExecList *e;
                 e= IOProcessLine.first->processList;
                 IOProcessLine.first->processList = IOProcessLine.first->processList->next;
-
-
-            printf("%s %i %s %i \n", "EV5 IO consumido Processo:", p->ID, " ID da lista ", e->ID);
+                printConsumeIO(p, e);
             }
 
 

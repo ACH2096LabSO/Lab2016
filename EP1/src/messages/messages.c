@@ -2,6 +2,7 @@
 // Created by brunno on 29/03/16.
 //
 
+#include <zconf.h>
 #include "messages.h"
 #include "../entrada/entrada.h"
 
@@ -21,6 +22,29 @@ void printConfig(){
 
 }
 
+void printConsumeCPU(process *p, processExecList *e){
+
+#ifdef _MESSAGES_
+    printf("%s %i %s %i \n", "EV3 CPU consumido Processo:", p->ID, " ID da lista ", e->ID);
+#endif
+    char message[1000];
+    sprintf(message,"%i;%s;%i\n", p->ID, "PROCESS_CONSUME_CPU", currentTime);
+    fputs(message, outfile);
+
+}
+
+void printConsumeIO(process *p, processExecList *e){
+
+#ifdef _MESSAGES_
+    printf("%s %i %s %i \n", "EV5 IO consumido Processo:", p->ID, " ID da lista ", e->ID);
+#endif
+    char message[1000];
+    sprintf(message,"%i;%s;%i\n", p->ID, "PROCESS_CONSUME_IO", currentTime);
+    fputs(message, outfile);
+
+}
+
+
 
 void printProcess(process* proc, int printExecList){
 
@@ -33,6 +57,7 @@ void printProcess(process* proc, int printExecList){
             printf("%s %i %s %i\n", "     Exec:", p->ID, "Type:", p->type);
             p=p->next;
         }
+
     }
 
 #endif
@@ -96,22 +121,63 @@ void printMemoryMap(FRAME **memorymap){
 
 void printOutOfMemory(int available, int required, int jobId){
 #ifdef _MESSAGES_
-
     printf("%s %i %s %i %s %i\n", "Não há memória - Disponível:", available, "Requerida:", required, "Processo:", jobId);
 #endif
 }
 
-void printFreedTables(int tables)
+void printFreedTables(int tables, int jobId)
 {
 #ifdef _MESSAGES_
-
     printf("%s %i\n", "Quadros liberados", tables);
 #endif
+    char message[1000];
+    sprintf(message,"%i;%s%i%s;%i\n", jobId, "MEMORY_CLEAR_",tables, "_TABLES", currentTime);
+    fputs(message, outfile);
 }
 
 void printTransferMessage(char* action, int currenttime, processLine origin, processLine destination, process *p){
 #ifdef _MESSAGES_
     printf("%s %i %s %i %s %s %s %s %s %s \n", "Tempo:", currenttime, "Processo:", p->ID, "movido de", origin.name, "para", destination.name, "Motivo:", action);
 #endif
+    char message[1000];
+    sprintf(message,"%i;%s%s%s%s%s%s;%i\n", p->ID, "PROCESS_TRANSFER_FROM_",origin.name, "_TO_",destination.name, "_EVENT_",action,  currentTime);
+    fputs(message, outfile);
+}
+
+void printReleaseProcessIO(process *p){
+#ifdef _MESSAGES_
+    printf("%s %i %s %i \n", "Processo finalizado em IO ID:", p->ID, " no tempo ", currentTime);
+#endif
+    char message[1000];
+    sprintf(message,"%i;%s;%i\n", p->ID, "PROCESS_FINISH_ON_IO", currentTime);
+    fputs(message, outfile);
+}
+void printReleaseProcessCPU(process *p){
+#ifdef _MESSAGES_
+    printf("%s %i %s %i \n", "Processo finalizado em CPU ID:", p->ID, " no tempo ", currentTime);
+#endif
+    char message[1000];
+    sprintf(message,"%i;%s;%i\n", p->ID, "PROCESS_FINISH_ON_CPU", currentTime);
+    fputs(message, outfile);
+}
+
+void generateOutputFile(){
+#ifdef _MESSAGES_
+    printf("%s \n", "Salvando arquivo de saída");
+#endif
+    sleep(2);
+    fclose(outfile);
+    sleep(2);
+
+};
+
+void startOutputFile(){
+#ifdef _MESSAGES_
+    printf("%s \n", "Iniciando arquivo de saida");
+#endif
+    outfile =fopen("resultado.txt","w+");
+    fputs("JOB;EVENT;EVENT_TIME\n", outfile);
+
+
 }
 

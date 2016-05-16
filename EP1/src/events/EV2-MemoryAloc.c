@@ -20,6 +20,7 @@ void EV2Execute(){
         else{
             if (framesNeeded(activeProcessLine.first->memory) > mainMemorySize){
                 transferProcess("EV2 - Memoria insuficiente", currentTime, &activeProcessLine, &cancelledProcessLine);
+                finishedJobs++;
             }
             else{
 

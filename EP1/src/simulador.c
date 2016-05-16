@@ -97,7 +97,9 @@ int main(int argc, char *argv[]) // main para inicializar o programa. qualquer d
     setWaitingList(f);
     fclose(f);
 
+    startOutputFile();
     int resultSimulate = simulate();
+    generateOutputFile();
 
     sleep(3);
 
