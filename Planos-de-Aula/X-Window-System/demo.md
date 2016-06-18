@@ -66,7 +66,6 @@ $ sudo startx
 
 ## Abrindo aplicações gráficas remotamente via SSH
 
-
 1. Instale o pacote xauth
 
     ```sh
@@ -98,6 +97,7 @@ $ sudo startx
     ```sh
     $ xedit arquivo.txt
     ```
+
 ## Google Chrome em modo quiosque
 
 Uma utilização interessante do sistema X é criação de quiosques ou *displays* que rodem apenas uma aplicação gráfica (ex: telões de controle de fila, monitores de propaganda, telas de aeroportos etc). Para isso, por exemplo, é possível utilizar o navegador Google Chrome em modo quiosque, que oculta menus e barra de endereço e não possibilita o click com botão direito do mouse.
@@ -123,7 +123,7 @@ Uma vez que o Chrome não pode fazer cache no diretório home do usuário root, 
 Em seu arquivo `~/.xinitrc` chame o script criado acima:
 
 ```sh
-base ~/open-chromium.sh
+bash ~/open-chromium.sh
 ```
 
 Caso esteja utilizando um gerenciador de janelas, o código de abertura do navegador pode ser inserido diretamente no arquivo `autostart` do gerenciador.
