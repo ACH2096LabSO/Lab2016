@@ -18,7 +18,7 @@ Para iniciar o ambiente X11 padrão, utilize o programa `startx`:
 $ sudo startx
 ```
 
-Caso queira customizar a inicialização do ambiente, quais aplicações abrir e onde posicionar as janelas, crie um arquivo `~/.xinitrc` e utilize o programa `xinit`:
+Caso queira customizar a inicialização do ambiente, especificando quais aplicações abrir e onde posicionar as janelas, crie um arquivo `~/.xinitrc` e utilize o programa `xinit`:
 
 ```
 xclock -d -update 1 -geometry +15+15 &
@@ -64,7 +64,7 @@ Inicie seu ambiente gráfico:
 $ sudo startx
 ```
 
-## Abrir aplicações gráficas remotamente via SSH
+## Abrindo aplicações gráficas remotamente via SSH
 
 
 1. Instale o pacote xauth
@@ -98,3 +98,32 @@ $ sudo startx
     ```sh
     $ xedit arquivo.txt
     ```
+## Google Chrome em modo quiosque
+
+Uma utilização interessante do sistema X é criação de quiosques ou *displays* que rodem apenas uma aplicação gráfica (ex: telões de controle de fila, monitores de propaganda, telas de aeroportos etc). Para isso, por exemplo, é possível utilizar o navegador Google Chrome em modo quiosque, que oculta menus e barra de endereço e não possibilita o click com botão direito do mouse.
+
+Instale o Chrome no servidor:
+
+```sh
+$ sudo apt-get install chromium-browser
+```
+
+Crie um bash script que inicializará o navegador:
+
+```sh
+CHROMIUM_TEMP=~/tmp/chromium
+mkdir -p $CHROMIUM_TEMP
+
+chromium-browser --kiosk --start-maximized --disk-cache-dir=$CHROMIUM_TEMP/cache/ --user-data-dir=$CHROMIUM_TEMP/user_data/ http://www.each.usp.br &
+```
+
+Uma vez que o Chrome não pode fazer cache no diretório home do usuário root, especificamos a variável `CHROMIUM_TEMP` como sendo o diretório home do usuário que pediu a execução do ambiente gráfico.
+
+
+Em seu arquivo `~/.xinitrc` chame o script criado acima:
+
+```sh
+base ~/open-chromium.sh
+```
+
+Caso esteja utilizando um gerenciador de janelas, o código de abertura do navegador pode ser inserido diretamente no arquivo `autostart` do gerenciador.
