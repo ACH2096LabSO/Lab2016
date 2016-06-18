@@ -9,6 +9,7 @@ Familiarizar os alunos com uma implementação completa de um sistema operaciona
 |Atividade|Data|
 |---------|-----|
 |~~[EP1](EP1/)~~|~~30/03/2016~~|
+|Prova final|24/06/2016|
 
 ## Aulas
 
