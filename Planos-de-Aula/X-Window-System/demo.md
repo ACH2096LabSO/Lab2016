@@ -32,6 +32,38 @@ Iniciando o ambiente customizado:
 $ sudo xinit
 ```
 
+### Gerenciadores de janelas
+
+Embora seja possível utilizar o X11 sem um gerenciador de janelas, nem sempre é a maneira mais prática e flexível para o dia-a-dia. Existem [centenas de gerenciadores disponíveis](https://en.wikibooks.org/wiki/Guide_to_X11/Window_Managers). Para a demonstração, optamos por utilizar o [Tab Window Manager](https://wiki.archlinux.org/index.php/twm) (Twm) e o [Openbox](http://openbox.org/wiki/Main_Page).
+
+```sh
+$ sudo apt-get install twm
+```
+
+ou
+
+```sh
+$ sudo apt-get install openbox
+```
+
+Para gerar o menu de aplicações disponíveis (aka menu iniciar), instale o pacote `menu`:
+
+```sh
+$ sudo apt-get install menu
+```
+
+Para atualizar a listagem, utilize o comando `update-menus`:
+
+```sh
+$ sudo update-menus
+```
+
+Inicie seu ambiente gráfico:
+
+```sh
+$ sudo startx
+```
+
 ## Abrir aplicações gráficas remotamente via SSH
 
 
