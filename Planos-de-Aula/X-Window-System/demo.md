@@ -86,7 +86,7 @@ $ sudo startx
     $ sudo service sshd restart
     ```
 
-3. No computar remoto (de preferência Linux, uma vez que é necessário ter o X11 também instalado), realize a conexão SSH passando o parâmetro `-X`
+3. No computador remoto (de preferência Linux, uma vez que é necessário ter o X11 também instalado), realize a conexão SSH passando o parâmetro `-X`
 
     ```sh
     $ ssh -X usuario@host
